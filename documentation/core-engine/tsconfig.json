@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "ES5",
+      "lib": [
+        "ES6"
+      ]
+    },
+    "include": [
+      "./headers/core-engine.d.ts"
+    ],
+    "exclude": []
+}

@@ -1,0 +1,16 @@
+{
+  "editor.foldingImportsByDefault": true,
+  "editor.linkedEditing": true,
+  "editor.formatOnSave": true,
+  "diffEditor.codeLens": true,
+  "editor.formatOnSaveMode": "modifications",
+  "editor.wordBasedSuggestionsMode": "allDocuments",
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "files.autoGuessEncoding": true,
+  "files.simpleDialog.enable": true,
+  "editor.insertSpaces": false,
+  "files.exclude": {
+    "node_modules": true,
+    "tsconfig.json": true
+  }
+}

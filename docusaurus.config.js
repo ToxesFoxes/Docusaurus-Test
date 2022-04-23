@@ -11,7 +11,7 @@ const config = {
 	url: 'https://docs.mineprogramming.org',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
-	onBrokenMarkdownLinks: 'warn',
+	onBrokenMarkdownLinks: 'throw',
 	favicon: 'img/favicon.ico',
 	organizationName: 'mineprogramming', // Usually your GitHub org/user name.
 	projectName: 'innnercore-docs', // Usually your repo name.
@@ -24,20 +24,35 @@ const config = {
 				direction: 'ltr',
 				htmlLang: 'en-US',
 			},
-			fr: {
+			ru: {
 				label: 'Русский',
 				direction: 'ltr',
 				htmlLang: 'ru-RU',
 			},
 		},
 	},
-	presets: [
+	plugins: [
 		[
+			'docusaurus-plugin-typedoc',
+			{
+				entryPoints: ['documentation/core-engine/headers/core-engine.d.ts'],
+				tsconfig: 'documentation/core-engine/tsconfig.json',
+				out: 'api',
+				watch: process.env.TYPEDOC_WATCH,
+				sidebar: {
+					categoryLabel: 'API',
+					position: 0,
+					fullNames: true,
+				},
+			},
+		],
+	],
+	presets: [[
 			'classic',
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
 				docs: {
-					path: 'documentation/static',
+					path: 'docs',
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
@@ -51,25 +66,33 @@ const config = {
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
 				},
-			}),
-		],
+		})],
 	],
-
 	themeConfig:
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		({
 			navbar: {
-				title: 'My Site',
+				title: 'InnerCore',
 				logo: {
-					alt: 'My Site Logo',
-					src: 'img/logo.svg',
+					alt: 'InnerCore Logo',
+					src: 'img/coreengine_animated.svg',
 				},
 				items: [
 					{
 						type: 'doc',
 						docId: 'intro',
 						position: 'left',
-						label: 'Tutorial',
+						label: 'Docs',
+					},
+					{
+						to: 'docs/api/',  // 'api' is the 'out' directory
+						activeBasePath: 'docs',
+						label: 'API',
+						position: 'left',
+					},
+					{
+						type: 'localeDropdown',
+						position: 'right',
 					},
 					{ to: '/blog', label: 'Blog', position: 'left' },
 					{
@@ -86,7 +109,7 @@ const config = {
 						title: 'Docs',
 						items: [
 							{
-								label: 'Tutorial',
+								label: 'Getting Started',
 								to: '/docs/intro',
 							},
 						],
