@@ -35,17 +35,30 @@ const config = {
 		[
 			'docusaurus-plugin-typedoc',
 			{
-				entryPoints: ['documentation/core-engine/headers/core-engine.d.ts'],
-				tsconfig: 'documentation/core-engine/tsconfig.json',
-				out: 'api',
+				entryPoints: 'docs/core-engine/headers/core-engine.d.ts',
+				tsconfig: 'docs/core-engine/tsconfig.json',
 				watch: process.env.TYPEDOC_WATCH,
-				sidebar: {
-					categoryLabel: 'API',
-					position: 0,
-					fullNames: true,
-				},
 			},
 		],
+		// [
+		// 	'content-docs',
+		// 	/** @type {import('@docusaurus/plugin-content-docs').Options} */
+		// 	({
+		// 		id: 'api',
+		// 		path: 'docs/static/api/',
+		// 		routeBasePath: '/docs/api/',
+		// 		editUrl: ({ locale, versionDocsDirPath, docPath }) => {
+		// 			// if (locale !== 'en') {
+		// 			// 	return `https://crowdin.com/project/docusaurus-v2/${locale}`
+		// 			// }
+		// 			return `https://github.com/facebook/docusaurus/edit/main/website/${versionDocsDirPath}/${docPath}`
+		// 		},
+		// 		editCurrentVersion: true,
+		// 		sidebarPath: require.resolve('./docs/sidebars/api.js'),
+		// 		showLastUpdateAuthor: true,
+		// 		showLastUpdateTime: true,
+		// 	}),
+		// ],
 	],
 	presets: [[
 			'classic',
@@ -53,7 +66,7 @@ const config = {
 			({
 				docs: {
 					path: 'docs',
-					sidebarPath: require.resolve('./sidebars.js'),
+					sidebarPath: require.resolve('./docs/sidebars/docs.js'),
 					// Please change this to your repo.
 					editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
 				},
@@ -80,13 +93,13 @@ const config = {
 				items: [
 					{
 						type: 'doc',
-						docId: 'intro',
+						docId: 'wiki/intro',
 						position: 'left',
 						label: 'Docs',
 					},
 					{
-						to: 'docs/api/',  // 'api' is the 'out' directory
-						activeBasePath: 'docs',
+						to: 'docs/api',
+						activeBasePath: 'docs/api',
 						label: 'API',
 						position: 'left',
 					},
